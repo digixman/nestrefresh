@@ -111,7 +111,7 @@
         <!-- Whether the CollapsingToolbarLayout should draw its own shrinking/growing title. -->
         <attr name="nr_titleEnabled" format="boolean"/>
         <!-- The title to show when titleEnabled is set to true. -->
-        <attr name="nr_title"/>
+        <attr name="nr_title" format="string"/>
     </declare-styleable>
 
     <declare-styleable name="NRCollapsingToolbarLayout_Layout">
