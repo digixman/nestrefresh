@@ -8,16 +8,16 @@ import android.graphics.Rect
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
-import android.support.annotation.*
-import android.support.annotation.IntRange
-import android.support.v4.content.ContextCompat
-import android.support.v4.graphics.drawable.DrawableCompat
-import android.support.v4.math.MathUtils
-import android.support.v4.util.ObjectsCompat
-import android.support.v4.view.GravityCompat
-import android.support.v4.view.ViewCompat
-import android.support.v4.view.WindowInsetsCompat
-import android.support.v7.widget.Toolbar
+import androidx.annotation.*
+import androidx.annotation.IntRange
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
+import androidx.core.math.MathUtils
+import androidx.core.util.ObjectsCompat
+import androidx.core.view.GravityCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.appcompat.widget.Toolbar
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.Gravity
@@ -56,7 +56,7 @@ class NRCollapsingToolbarLayout @JvmOverloads constructor(
     internal val collapsingTextHelper: NRCollapsingTextHelper?
     private var collapsingTitleEnabled: Boolean = false
     private var drawCollapsingTitle: Boolean = false
-    private var mRefreshBarParent: RefreshBarLayout? = null
+    private var refreshBarParent: RefreshBarLayout? = null
 
     /**
      * Returns the drawable which is used for the foreground scrim.
@@ -397,10 +397,8 @@ class NRCollapsingToolbarLayout @JvmOverloads constructor(
         // Add an OffsetChangedListener if possible
         val parent = parent
         if (parent is RefreshBarLayout) {
-            mRefreshBarParent = parent
+            refreshBarParent = parent
             // Copy over from the ABL whether we should fit system windows
-            this.fitsSystemWindows = ViewCompat.getFitsSystemWindows(parent as View)
-
             updateOffsetChangedListener(OffsetUpdateListener())
 
             // We're attached, so lets request an inset dispatch
@@ -411,8 +409,7 @@ class NRCollapsingToolbarLayout @JvmOverloads constructor(
     fun updateOffsetChangedListener(offsetUpdateListener: OffsetUpdateListener) {
         onOffsetChangedListener = offsetUpdateListener
         onOffsetChangedListener?.let {
-            mRefreshBarParent?.addOnOffsetChangedListener(it)
-
+            refreshBarParent?.addOnOffsetChangedListener(it)
         }
     }
 

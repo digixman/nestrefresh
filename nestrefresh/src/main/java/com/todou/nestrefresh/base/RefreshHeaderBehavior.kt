@@ -4,9 +4,9 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.content.Context
-import android.support.design.widget.CoordinatorLayout
-import android.support.v4.math.MathUtils
-import android.support.v4.view.ViewCompat
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.math.MathUtils
+import androidx.core.view.ViewCompat
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.VelocityTracker
@@ -14,13 +14,11 @@ import android.view.View
 import android.view.ViewConfiguration
 import android.view.animation.DecelerateInterpolator
 import android.widget.OverScroller
+import androidx.customview.widget.ViewDragHelper.INVALID_POINTER
 import com.todou.nestrefresh.base.State.STATE_COLLAPSED
 import com.todou.nestrefresh.base.State.STATE_DRAGGING
 import com.todou.nestrefresh.base.State.STATE_HOVERING
 import com.todou.nestrefresh.base.State.STATE_SETTLING
-import android.icu.lang.UCharacter.GraphemeClusterBreak.V
-import android.support.v4.widget.ViewDragHelper.INVALID_POINTER
-
 
 abstract class RefreshHeaderBehavior<V : View> : BaseBehavior<V>, RefreshHeader {
     private var flingRunnable: Runnable? = null
